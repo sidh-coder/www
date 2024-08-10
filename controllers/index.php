@@ -2,7 +2,7 @@
 <?php 
     
     $heading = "Home";
-    require "views/index.view.php";
+    require view("index.view.php");
 ?>
 
 
