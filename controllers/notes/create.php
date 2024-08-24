@@ -1,7 +1,7 @@
 <?php 
     use Core\Validator;
     use Core\Database;
-    require base_path('Validator.php');
+    require base_path('Core/Validator.php');
     $config = require base_path('config.php');
     $db = new Database($config['database']);
     $heading = "Create your Note";

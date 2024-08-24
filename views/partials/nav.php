@@ -8,7 +8,7 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="/" class="block rounded-md <?php echo urli('/') ? 'bg-gray-900': 'text-grey-300';  ?> hover:bg-gray-700 hover:text-white px-3 py-2 text-base font-medium text-white" aria-current="page">Home</a>
+              <a href="/home" class="block rounded-md <?php echo urli('/home') ? 'bg-gray-900': 'text-grey-300';  ?> hover:bg-gray-700 hover:text-white px-3 py-2 text-base font-medium text-white" aria-current="page">Home</a>
             <a href="/about" class="block rounded-md <?php echo urli('/about') ? 'bg-gray-900': 'text-grey-300';  ?> hover:bg-gray-700 hover:text-white px px-3 py-2 text-base font-medium text-white" aria-current="page">About</a>
             <a href="/notes" class="block rounded-md <?php echo urli('/about') ? 'bg-gray-900': 'text-grey-300';  ?> hover:bg-gray-700 hover:text-white px px-3 py-2 text-base font-medium text-white" aria-current="page">Notes</a>
             <a href="/contact" class="block rounded-md <?php echo urli('/contact') ? 'bg-gray-900': 'text-grey-300';  ?> hover:bg-gray-700 hover:text-white px px-3 py-2 text-base font-medium text-white" aria-current="page">Contact</a>
@@ -77,7 +77,7 @@
     <div class="md:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Home</a>
+        <a href="/home" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Home</a>
         <a href="/about" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">About</a>
         <a href="/notes" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Notes</a>
         <a href="/contact" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Contact</a>
@@ -86,7 +86,12 @@
       <div class="border-t border-gray-700 pb-3 pt-4">
         <div class="flex items-center px-5">
           <div class="flex-shrink-0">
+            <?php if($_SESSION['user'] ?? false) : ?>
             <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+            <?php else : ?>
+              <a href = "/register" class = "text-white">Register</a>
+            <?php endif; ?>
+          </div>
           </div>
           <div class="ml-3">
             <div class="text-base font-medium leading-none text-white">Tom Cook</div>
