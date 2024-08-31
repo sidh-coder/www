@@ -6,6 +6,12 @@ require base_path('Core/Validator.php');
 //require base_path('Core/Database.php');
 $email = $_POST['email'];
 $password = $_POST['password'];
+$username = $_POST['username'];
+$first_name = $_POST['first_name'];
+$last_name = $_POST['last_name'];
+$photo = $_POST['photo'];
+
+
 $config = require base_path('config.php');
 $db = new Database($config['database']);
 $errors = [];
@@ -28,12 +34,20 @@ if($user){
     exit();
 }
 else{
-    $db->query('insert into users(email,password) values(:email,:password)',[
+    $db->query('insert into users(email,password,username,first_name,last_name,photo) values(:email,:password,:username,:first_name,:last_name,:photo)',[
         'email'=>$email,
-        'password'=>password_hash($password,PASSWORD_BCRYPT)
+        'password'=>password_hash($password,PASSWORD_BCRYPT),
+        'username'=>$username,
+        'first_name'=>$first_name,
+        'last_name'=>$last_name,
+        'photo'=>$photo,
     ]);
     $_SESSION['user'] =[
-        'email'=>$email
+        'email'=>$email,
+        'username'=>$username,
+        'first_name'=>$first_name,
+        'last_name'=>$last_name,
+        'photo'=>$photo
     ];
     header('location: /home');
     exit();

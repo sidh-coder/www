@@ -2,15 +2,19 @@
 
 namespace Core;
 use PDO;
+use PDOException;
+
 class Database{
+    protected $pdo;
     public $connection;
     public $statement;
     public function __construct($config){
-        
+       
         $dsn = 'mysql:'.(http_build_query($config,'',';'));
         $username = 'root';
         $password = 'sidh2017';
         $this->connection = new PDO($dsn, $username, $password);
+        
     }
     public function query($query,$params = []){
 
@@ -38,4 +42,8 @@ class Database{
             return $result;
         }
     }
+  
+    
+
+
 }

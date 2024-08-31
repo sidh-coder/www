@@ -13,9 +13,10 @@
         $errors['body'] = 'A body is required, which is less than 1000 char';
     }
     if(empty($errors)){
-        $db->query('INSERT INTO notes (body, user_id) VALUES(:body, :user_id)',[
+        $email = $_SESSION['user']['email'];
+        $db->query('INSERT INTO notes (body, email) VALUES(:body, :email)',[
             'body'=>$_POST['body'],
-            'user_id'=>1
+            'email'=>$email
             ]);
     }
 }
